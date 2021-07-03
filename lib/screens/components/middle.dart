@@ -1,4 +1,5 @@
 import 'package:admin/responsive.dart';
+import 'package:admin/screens/components/rightbar.dart';
 import 'package:flutter/material.dart';
 import 'package:admin/models/MyFiles.dart';
 import 'package:admin/screens/components/RecentFiles.dart';
@@ -14,6 +15,7 @@ class Middle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double storageMargin = Responsive.isMobile(context)? 0.0 : 10.0;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal:5.0, vertical: 5.0),
       decoration: BoxDecoration(
@@ -21,7 +23,7 @@ class Middle extends StatelessWidget {
         color: Colors.transparent
       ),
       width: 50,
-      height: 600,
+      height: Responsive.isMobile(context)? 800: 600,
       child: ListView(
         children: [
           MiddleTopbar(),
@@ -31,7 +33,12 @@ class Middle extends StatelessWidget {
             mobile: CardGrid(crossAxisCount: 2),
             tablet: CardGrid(crossAxisCount: 2, chidlAspectRatio: 1.5,),
           ),
-          RecentFiles()
+          RecentFiles(),
+          if(Responsive.isMobile(context))
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: storageMargin),
+              child: RightBar()
+            )
         ],
       ),
     );

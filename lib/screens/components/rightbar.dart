@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'chart.dart';
 import '../../constants.dart';
+import '../../responsive.dart';
 
 
 class RightBar extends StatelessWidget {
@@ -11,8 +12,10 @@ class RightBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final double storageMargin = Responsive.isMobile(context)? 0.0 : 5.0;
+        final double storageMarginVert = Responsive.isMobile(context)? 10.0 : 5.0;
         return Container(
-          margin: const EdgeInsets.symmetric(horizontal:5.0, vertical: 5.0),
+          margin: EdgeInsets.symmetric(horizontal:storageMargin, vertical: storageMarginVert),
           padding: const EdgeInsets.only(left:15.0, right: 15.0 , top: 15.0, bottom: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),

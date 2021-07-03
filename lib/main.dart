@@ -4,6 +4,7 @@ import 'package:admin/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
             .apply(bodyColor: Colors.white),
         canvasColor: secondaryColor,
       ),
-      home: MultiProvider(
+      home: new SplashScreen(
+      seconds: 3,
+      navigateAfterSeconds: new MultiProvider(
         providers: [
           ChangeNotifierProvider(
             create: (context)=> MenuController()
@@ -30,6 +33,18 @@ class MyApp extends StatelessWidget {
           ],
         child: MainScreen(),
       ),
+      title: new Text('Welcome In SplashScreen',
+      style: new TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20.0
+      ),),
+      image: new Image.network('https://kalke.co/media-employers/logo1.png'),
+      backgroundColor: Colors.white,
+      styleTextUnderTheLoader: new TextStyle(),
+      photoSize: 100.0,
+      onClick: ()=>print("Flutter Egypt"),
+      loaderColor: Colors.red
+    ),
     );
   }
 }

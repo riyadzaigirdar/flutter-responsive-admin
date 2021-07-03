@@ -34,11 +34,7 @@ class DashBoard extends StatelessWidget{
                 ],
               ),
             ),
-            if(Responsive.isMobile(context))
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal:10.0),
-              child: RightBar()
-            )
+            
           ],
         )
       )
